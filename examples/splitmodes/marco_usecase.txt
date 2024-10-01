@@ -1,0 +1,21 @@
+Create separate images per channel from a directory of images
+
+As: a user
+I want to: get 3xN images, one per channel from N RGB images
+Desired outcome: A new folder with the monochromatic images
+
+
+1. The program accepts as input a folder containing PNG image
+    1.1 If dir is empty, raise an error and terminate
+    1.2 If there are non-PNG images, then warn user and process
+        the PNG ones
+    1.3 If corrupt images, warn user and process the rest
+    1.4 If no permission to read dir, raise error and terminate
+2. Collect all valid images from dir -> path_list 
+3. Create the output folder at the same level as the input folder and name it as input folder + suffix "_channels"
+    3.1 If out already exists -> add + "_{timestamp}"
+    3.2 If no permission to write -> error and terminate
+4. Loop over valid images
+    4.1 For each channel
+        4.1.1 Create the monochromatic image
+        4.1.2 save it in output dir by using the input file name + suffix (r,g,b)
